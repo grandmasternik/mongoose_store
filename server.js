@@ -18,10 +18,34 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 // ==== Routes ==== //
 // Index
+app.get('/products', (req, res) => {
+	res.render('index.ejs');
+});
+
 
 // New
 
 // Create
+
+
+
+// Create
+app.post('/products', (req, res) => {
+	if (req.body.completed === 'on') {
+		//if checked, req.body.completed is set to 'on'
+		req.body.completed = true;
+	} else {
+		//if not checked, req.body.completed is undefined
+		req.body.completed = false;
+	}
+	Product.create(req.body, (error, createdProduct) => {
+		res.redirect('/products');
+	});
+});
+
+app.post('/products', (req, res) => {
+	res.send(req.body);
+});
 
 // Update
 
