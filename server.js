@@ -22,10 +22,19 @@ app.get('/products', (req, res) => {
 	res.render('index.ejs');
 });
 
+// SHow
+app.get('/products/:id', (req, res) => {
+	Product.findById(req.params.id, (err, foundProduct) => {
+		res.render('show.ejs', {
+			product: foundProduct,
+		});
+	});
+});
 
 // New
-
-// Create
+app.get('/products/new', (req, res) => {
+	res.render('new.ejs');
+});
 
 
 
