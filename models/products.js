@@ -2,11 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true,
+    },
     description: String,
     img: String,
-    price: Number,
-    qty: Number
+    price: {
+        type: Number,
+        required: true,
+        min: [0],
+    },
+    qty: {
+        type: Number,
+        required: true,
+        min: [0, "Out of Stock"]
+    }
 });
 
 const Product = mongoose.model('Product', productSchema);
