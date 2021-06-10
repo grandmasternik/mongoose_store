@@ -83,4 +83,4 @@ productsRouter.get('/products/seed', (req, res) => { },
             });
         }))));
         // export functionality
-        module.exports = booksRouter;
+        module.exports = productsRouter;
