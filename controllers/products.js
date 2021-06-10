@@ -1,7 +1,7 @@
 // require and set up dependencies
 const express = require("express");
-const Product = require("../models/products");
 const productsRouter = express.Router(); //an object that provides "router functionality"
+const Product = require("../models/products");
 
 productsRouter.get('/products/seed', (req, res) => { },
     productsRouter.get('/products', (req, res) => { },
@@ -82,5 +82,6 @@ productsRouter.get('/products/seed', (req, res) => { },
                 });
             });
         }))));
+
         // export functionality
         module.exports = productsRouter;

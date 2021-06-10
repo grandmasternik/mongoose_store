@@ -1,15 +1,14 @@
 require('dotenv').config();
 // ===== Dependencies ==== //
-// const methodOverride = require('method-override');
-const mongoose = require('mongoose');
 const express = require('express');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const app = express();
-const Product = require('./models/products.js');
-const Seed = require('./models/productSeed.js');
+// const Seed = require('./models/productSeed.js');
 
 
 //Middleware
-// app.use(methodOverride('_method'));
+app.use(methodOverride('_method'));
 
 //Body parser middleware: give us access to req.body
 app.use(express.urlencoded({ extended: true }));
