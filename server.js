@@ -31,6 +31,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 // ==== Controller ==== //
 const productsController = require('./controllers/products.js');
+app.use('/products', productsController);
 
 //  ==== Web Server ===== //
 const PORT = process.env.PORT;

@@ -13,12 +13,16 @@
         <a href="/products">Back to Products Index</a>
     </nav>
     <h1><%=product.name%></h1>
-    Description: <%= product.description%>
-    Image <%= product.img%>
-    Price: <%= product.price%>
-    Qty: <%= product.qty%>
+    dscription: <%= product.description%>
+    image <%= product.img%>
+    price: <%= product.price%>
+    qty: <%= product.qty%>
     <br />
-    Completed: <%= book.completed ? 'Yes' : 'No'%>
+    <% for(let i=0;i<product.qty.length;i++) { %>
+
+        <span onclick="getId('<%=product.qty[i].id%>')"><%=product.qty[i].name%></span>
+        
+        <% } %>
 </body>
 
 </html>

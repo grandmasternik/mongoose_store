@@ -1,34 +1,27 @@
 // require and set up dependencies
 const express = require("express");
 const productsRouter = express.Router(); //an object that provides "router functionality"
+
 const Product = require("../models/products");
+const seedData = require('../models/productSeed.js');
+            
+                            //Index
+            // productsRouter.get('/products', (req, res) => {
+            //     Product.find({}, (error, allProducts) => {
+            //         res.render('index.ejs', {
+            //             products: allProducts,
+            //         });
+            //     });
+            // });
+            // Seed
+const productSeed = require('../models/productSeed');
+productsRouter.get('/products/seed', (req, res) => {
+    Product.deleteMany({}, (error, allProducts) => {});
 
-productsRouter.get('/products/seed', (req, res) => { },
-    productsRouter.get('/products', (req, res) => { },
-    productsRouter.get('/products/new', (req, res) => { },
-        productsRouter.delete('/products/:id', (req, res) => {
-            // productsRouter.delete('products/:id', 
-            productsRouter.put('/products/:id', (req, res) => { },
-                productsRouter.post('/produc}ts', (req, res) => { },
-                    productsRouter.get('/products/:id/edit', (req, res) => { },
-                        productsRouter.get('/products/:id', (req, res) => { },
-
-                            // Seed
-                            productsRouter.get('/products/seed', (req, res) => {
-                                Product.deleteMany({}, (error, allProducts) => { });
-                                Product.create(productSeed, (error, data) => {
-                                    res.redirect('/products');
-                                })
-                            })))));
-                            
-            //Index
-            productsRouter.get('/products', (req, res) => {
-                Product.find({}, (error, allProducts) => {
-                    res.render('index.ejs', {
-                        products: allProducts,
-                    });
-                });
-            });
+    Product.create(productSeed, (error, data) => {
+        res.redirect('/products');
+    });
+});
 
             //New
             productsRouter.get('/products/new', (req, res) => {
@@ -81,7 +74,7 @@ productsRouter.get('/products/seed', (req, res) => { },
                     res.render('show.ejs', { product: foundProduct });
                 });
             });
-        }))));
+        
 
         // export functionality
         module.exports = productsRouter;
