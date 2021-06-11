@@ -3,17 +3,17 @@ const express = require("express");
 const productsRouter = express.Router(); //an object that provides "router functionality"
 
 const Product = require("../models/products");
-const seedData = require('../models/productSeed.js');
-            
-                            //Index
-            // productsRouter.get('/products', (req, res) => {
-            //     Product.find({}, (error, allProducts) => {
-            //         res.render('index.ejs', {
-            //             products: allProducts,
-            //         });
-            //     });
-            // });
-            // Seed
+
+// Index
+productsRouter.get('/', (req, res) => {
+    Product.find({}, (error, allProducts) => {
+        res.render('index.ejs', {
+            products: allProducts,
+        });
+    });
+});
+
+// Seed
 const productSeed = require('../models/productSeed');
 productsRouter.get('/products/seed', (req, res) => {
     Product.deleteMany({}, (error, allProducts) => {});
@@ -23,58 +23,60 @@ productsRouter.get('/products/seed', (req, res) => {
     });
 });
 
-            //New
-            productsRouter.get('/products/new', (req, res) => {
-                res.render('new.ejs');
-            });
+//New
+productsRouter.get('/products/new', (req, res) => {
+    res.render('new.ejs');
+});
 
-            //DELETE
-            productsRouter.delete('/products/:id', (req, res) => {
-                Product.findByIdAndRemove(req.params.id, (err, data) => {
-                    res.redirect('/products');
-                });
-            });
-        
-            // Update
-            productsRouter.put('/products/:id', (req, res) => {
-                if (req.body.readyToEat === 'on') {
-                    req.body.readyToEat = true;
-                } else {
-                    req.body.readyToEat = false;
-                }
-                res.send(req.body);
-            });
+//DELETE
+productsRouter.delete('/products/:id', (req, res) => {
+    Product.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect('/products');
+    });
+});
 
-            //Create 
-            productsRouter.post('/products', (req, res) => {
-                if (req.body.completed === 'on') {
-                    //if checked, req.body.completed is set to 'on'
-                    req.body.completed = true;
-                } else {
-                    //if not checked, req.body.completed is undefined
-                    req.body.completed = false;
-                }
-                Product.create(req.body, (error, createdProduct) => {
-                    res.redirect('/products');
-                });
-            });
+// Update
+productsRouter.put('/products/:id', (req, res) => {
+    if (req.body.readyToEat === 'on') {
+        req.body.readyToEat = true;
+    } else {
+        req.body.readyToEat = false;
+    }
+    res.send(req.body);
+});
 
-            //EDIT
-            productsRouter.get('/products/:id/edit', (req, res) => {
-                Product.findById(req.params.id, (error, foundProduct) => {
-                    res.render('edit.ejs', {
-                        product: foundProduct
-                    });
-                });
-            });
+//Create 
+productsRouter.post('/products', (req, res) => {
+    if (req.body.completed === 'on') {
+        //if checked, req.body.completed is set to 'on'
+        req.body.completed = true;
+    } else {
+        //if not checked, req.body.completed is undefined
+        req.body.completed = false;
+    }
+    Product.create(req.body, (error, createdProduct) => {
+        res.redirect('/products');
+    });
+});
 
-            // Show Page
-            productsRouter.get('/products/:id', (req, res) => {
-                Product.findById(req.params.id, (err, foundProduct) => {
-                    res.render('show.ejs', { product: foundProduct });
-                });
-            });
-        
+//EDIT
+productsRouter.get('/products/:id/edit', (req, res) => {
+    Product.findById(req.params.id, (error, foundProduct) => {
+        res.render('edit.ejs', {
+            product: foundProduct
+        });
+    });
+});
 
-        // export functionality
-        module.exports = productsRouter;
+// Show Page
+productsRouter.get('/products/:id', (req, res) => {
+    Product.findById(req.params.id, (err, foundProduct) => {
+        res.render('show.ejs', {
+            product: foundProduct
+        });
+    });
+});
+
+
+// export functionality
+module.exports = productsRouter;

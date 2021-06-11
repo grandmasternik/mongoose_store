@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const app = express();
+const seedData = require('./models/productSeed.js');
 // const Seed = require('./models/productSeed.js');
 
 
@@ -30,7 +31,7 @@ db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // ==== Controller ==== //
-const productsController = require('./controllers/products.js');
+const productsController = require('./controllers/products');
 app.use('/products', productsController);
 
 //  ==== Web Server ===== //
