@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,17 +12,28 @@
     <nav>
         <a href="/products">Back to Products Index</a>
     </nav>
-    <h1><%=product.name%></h1>
-    dscription: <%= product.description%>
-    image <%= product.img%>
-    price: <%= product.price%>
-    qty: <%= product.qty%>
+    <h1><%= products.name %></h1>
+    dscription: <%= products.description%>
+    image <%= products.img%>
+    price: <%= products.price%>
+    qty: <%= products.qty%>
     <br />
+    <button type="button" class="btn btn-primary">BUY</button>
     <% for(let i=0;i<product.qty.length;i++) { %>
 
-        <span onclick="getId('<%=product.qty[i].id%>')"><%=product.qty[i].name%></span>
+        <span onclick="getId('<%=products.qty[i].id%>')"><%=products.qty[i].name%></span>
         
         <% } %>
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('./partials/head.ejs') %>
+</head>
+<body>
+    
+</body>
 </html>

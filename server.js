@@ -4,8 +4,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const app = express();
-const seedData = require('./models/productSeed.js');
-// const Seed = require('./models/productSeed.js');
+const productSeed = require('./models/productSeed.js');
+const productController = require(`./controllers/products`)
+const port = process.env.PORT || 3000;
+
 
 
 //Middleware
@@ -13,6 +15,9 @@ app.use(methodOverride('_method'));
 
 //Body parser middleware: give us access to req.body
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride(`_method`))
+app.use(express.static(__dirname + `/public`));
+app.use(`/products`, productController)
 
 // ==== config mongoose ===== //
 //===Database Connection====//
@@ -22,7 +27,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 	useFindAndModify: false,
 	useCreateIndex: true,
 });
-
+{/* <a href="/products/new" class="btn btn-secondary">Add New Item</a> */}
 
 // Database Connection Error/Success - optional but can be really helpful
 const db = mongoose.connection

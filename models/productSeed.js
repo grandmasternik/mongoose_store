@@ -1,4 +1,4 @@
-const Product = [
+const Products = [
     {
         name: 'Activated Charcoal',
         description: '16 oz of premium food grade activated charcoal. Great for cleansing skin, whitening teeth and clarifying hair.',
@@ -50,4 +50,4 @@ const Product = [
     }
 ];
 
-module.exports = Product;
+module.exports = Products;

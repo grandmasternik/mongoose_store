@@ -2,11 +2,11 @@
 const express = require("express");
 const productsRouter = express.Router(); //an object that provides "router functionality"
 
-const Product = require("../models/products");
+const Products = require("../models/products");
 
 // Index
-productsRouter.get('/', (req, res) => {
-    Product.find({}, (error, allProducts) => {
+productsRouter.get('/', async (req, res) => {
+    Products.find({}, (error, allProducts) => {
         res.render('index.ejs', {
             products: allProducts,
         });
@@ -45,19 +45,12 @@ productsRouter.put('/products/:id', (req, res) => {
     res.send(req.body);
 });
 
-//Create 
-productsRouter.post('/products', (req, res) => {
-    if (req.body.completed === 'on') {
-        //if checked, req.body.completed is set to 'on'
-        req.body.completed = true;
-    } else {
-        //if not checked, req.body.completed is undefined
-        req.body.completed = false;
-    }
-    Product.create(req.body, (error, createdProduct) => {
-        res.redirect('/products');
+// Create
+productsRouter.post(`/`, (req, res) => {
+    Products.create(req.body, function (error, createdProducts) {
+      res.redirect(`/products`)
     });
-});
+  });
 
 //EDIT
 productsRouter.get('/products/:id/edit', (req, res) => {
@@ -69,14 +62,11 @@ productsRouter.get('/products/:id/edit', (req, res) => {
 });
 
 // Show Page
-productsRouter.get('/products/:id', (req, res) => {
-    Product.findById(req.params.id, (err, foundProduct) => {
-        res.render('show.ejs', {
-            product: foundProduct
-        });
-    });
-});
-
+productsRouter.get(`/:id`, (req, res) => {
+    Products.findById(req.params.id, function (error, products) {
+      res.render(`show.ejs`, { products })
+    })
+  })
 
 // export functionality
 module.exports = productsRouter;
