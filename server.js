@@ -16,7 +16,8 @@ app.use(methodOverride('_method'));
 //Body parser middleware: give us access to req.body
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride(`_method`))
-app.use(express.static(__dirname + `/public`));
+// app.use(express.static('public'))
+// app.use(express.static(__dirname + `/public`));
 app.use(`/products`, productController)
 
 // ==== config mongoose ===== //
@@ -27,7 +28,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 	useFindAndModify: false,
 	useCreateIndex: true,
 });
-{/* <a href="/products/new" class="btn btn-secondary">Add New Item</a> */}
+// {<a href="/products/new" class="btn btn-secondary">Add New Item</a> }
 
 // Database Connection Error/Success - optional but can be really helpful
 const db = mongoose.connection

@@ -1,39 +1,21 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Show Page</title>
-</head>
-
-<body>
-    <nav>
-        <a href="/products">Back to Products Index</a>
-    </nav>
-    <h1><%= products.name %></h1>
-    dscription: <%= products.description%>
-    image <%= products.img%>
-    price: <%= products.price%>
-    qty: <%= products.qty%>
-    <br />
-    <button type="button" class="btn btn-primary">BUY</button>
-    <% for(let i=0;i<product.qty.length;i++) { %>
-
-        <span onclick="getId('<%=products.qty[i].id%>')"><%=products.qty[i].name%></span>
-        
-        <% } %>
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <%- include ('./partials/head.ejs') %>
 </head>
 <body>
+    <nav>
+        <a href="/products">Back to Products Index</a>
+    </nav>
+    <div class="card">
+		<h3><a href="/products/<%= product.id %>"><%= product.name %> </a></h3>
+		<img src= "<%= product.img %>" alt="<%= product.name %>"> 
+		<p class="$<%= product.price %>"></p>
+		<p><%= product.description %></p>
+		<p>$ <%= product.price  %> </p>
+		<p>In Stock: <%= product.qty %> </p>
+		<p><button>Add to Cart</button></p>
+	  </div>
     
 </body>
 </html>
