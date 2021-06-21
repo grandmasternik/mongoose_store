@@ -17,56 +17,55 @@ productsRouter.get('/seed', (req, res) => {
 // Index
 productsRouter.get('/', (req, res) => {
     Product.find({}, (error, allProducts) => {
-        res.render('index.ejs', {
+        res.render('index', {
             products: allProducts,
         });
     });
 });
 
-// //New
-productsRouter.get('/products/new', (req, res) => {
+//New
+productsRouter.get('/new', (req, res, next) => {
     res.render('new.ejs');
 });
 
-// //DELETE
-// productsRouter.delete('/products/:id', (req, res) => {
-//     Product.findByIdAndRemove(req.params.id, (err, data) => {
-//         res.redirect('/products');
-//     });
-// });
 
-// // Update
-// productsRouter.put('/products/:id', (req, res) => {
-//     if (req.body.readyToEat === 'on') {
-//         req.body.readyToEat = true;
-//     } else {
-//         req.body.readyToEat = false;
-//     }
-//     res.send(req.body);
-// });
+//DELETE
+productsRouter.delete('/products/:id', (req, res) => {
+    Product.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect('/products');
+    });
+});
 
-// // Create
-// productsRouter.post(`/`, (req, res) => {
-//     Product.create(req.body, function (error, createdProduct) {
-//       res.redirect(`/products`)
-//     });
-//   });
+// Update
+productsRouter.put('/:id', (req, res) => {
+  Product.findByIdAndUpdate(req.params.id, req.body, {
+    new: true
+  }, (err, updatedProduct) => {
+    res.redirect(`/products/${req.params.id}`)
+  });
+});
 
-// //EDIT
-// productsRouter.get('/products/:id/edit', (req, res) => {
-//     Product.findById(req.params.id, (error, foundProduct) => {
-//         res.render('edit.ejs', {
-//             product: foundProduct
-//         });
-//     });
-// });
+// Create
+productsRouter.post(`/`, (req, res) => {
+  Product.create(req.body, function (error, createdProduct) {
+    res.redirect(`/products`)
+  });
+});
 
 // Show Page
 productsRouter.get(`/:id`, (req, res) => {
-    Product.findById(req.params.id, function (error, product) {
-      res.render(`show.ejs`, { product })
-    })
+  Product.findById(req.params.id, function (error, product) {
+    res.render(`show.ejs`, { product })
   })
+})
 
+  //EDIT
+  productsRouter.get('/products/:id/edit', (req, res) => {
+    Product.findById(req.params.id, (error, foundProduct) => {
+        res.render('edit.ejs', {
+            product: foundProduct
+        });
+    });
+});
 // export functionality
 module.exports = productsRouter;

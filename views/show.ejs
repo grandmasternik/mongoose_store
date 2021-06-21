@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include ('./partials/head.ejs') %>
+	<title>MSN | Show</title>
 </head>
 <body>
     <nav>
@@ -14,7 +15,7 @@
 		<p><%= product.description %></p>
 		<p>$ <%= product.price  %> </p>
 		<p>In Stock: <%= product.qty %> </p>
-		<p><button>Add to Cart</button></p>
+		<p><button id="buy">Buy</button></p>
 	  </div>
     
 </body>

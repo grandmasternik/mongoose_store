@@ -2,17 +2,37 @@
 <html lang="en">
 <head>
   <%- include ('./partials/head.ejs') %>
+  <title>MSN | New</title>
 </head>
-<!-- <body>
-  <nav>
-    <a href="/products">Back to Products Index</a>
-</nav>
-  <form action="./models/products" method="POST"></form>
-  <div id="container">
-    <p><input type="text" placeholder="Enter New Product"></p>
-    <button type="submit" value="Add New Item"></button>
-    
-
-  </div>
-</body> -->
+<body>
+  <header>
+      <h1>Add New Product</h1>
+      </header>
+      <nav>
+          <ul>
+              <li>
+                  <a href="/">Home</a>
+              </li>
+              <li>
+                  <a href="/products"> Index</a>
+              </li>
+          </ul>
+      </nav>
+  </header>
+  <main>
+      <form action="/products" method="POST">
+          <label for="name">name: </label>
+          <input type="text" placeholder="name" id="name"/>
+          <label for="description">description: </label>
+          <input type="text" placeholder="description" id="description"/>
+          <label for="imgurl">imgurl: </label>
+          <input type="text" placeholder="imgurl" id="imgurl"/>
+          <label for="price">price: </label>
+          <input type="number" placeholder="price" id="price"/>
+          <label for="qty">qty: </label>
+          <input type="number" placeholder="qty" id="qty"/>
+          <input type="submit" value="Add Product">
+      </form>
+  </main>
+</body>
 </html>
