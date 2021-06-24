@@ -22,15 +22,20 @@
   <main>
       <form action="/products" method="POST">
           <label for="name">name: </label>
-          <input type="text" placeholder="name" id="name"/>
+          <input type="text" placeholder="name" name="name"/>
+          <br />
           <label for="description">description: </label>
-          <input type="text" placeholder="description" id="description"/>
-          <label for="imgurl">imgurl: </label>
-          <input type="text" placeholder="imgurl" id="imgurl"/>
-          <label for="price">price: </label>
-          <input type="number" placeholder="price" id="price"/>
+          <input type="text" placeholder="description" name="description"/>
+          <br />
+          <label for="img">imgurl: </label>
+          <input type="text" placeholder="imgurl" name="imgurl"/>
+          <br />
+          <label for="price">price: $</label>
+          <input type="number" placeholder="price" name="price"/>
+          <br />
           <label for="qty">qty: </label>
-          <input type="number" placeholder="qty" id="qty"/>
+          <input type="number" placeholder="qty" name="qty"/>
+          <br />
           <input type="submit" value="Add Product">
       </form>
   </main>

@@ -10,7 +10,7 @@
 	<h1>Mongoose Naturals</h1>
 
 	<div id="button">
-		<a href="/views/new.ejs" class="btn btn-primary">Add New</a>
+		<a href="/new" class="btn btn-primary">Add New</a>
 	</div>
 	<table>
 		<div id="sProduct">
@@ -32,7 +32,7 @@
 			method="POST">
 			<input type="submit" value="DELETE" />
 		</form>
-		<form action="/products/"<%=product.id %>?_method=EDIT" method="POST"><input type="submit" value="EDIT" /> 
+		<form action="/products/<%=product.id %>?_method=EDIT" method="POST"><input type="submit" value="EDIT" /> 
 		</form>
 	</div>
 

@@ -24,10 +24,10 @@ productsRouter.get('/', (req, res) => {
 });
 
 //New
-productsRouter.get('/new', (req, res, next) => {
+productsRouter.get('/new', (req, res) => {
     res.render('new.ejs');
+    console.log("route visited");
 });
-
 
 //DELETE
 productsRouter.delete('/products/:id', (req, res) => {
