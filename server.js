@@ -28,7 +28,8 @@ app.use('/', productController)
 
 // ==== config mongoose ===== //
 //===Database Connection====//
-mongoose.connect(process.env.DATABASE_URL, {
+const mongoURI = process.env.MONGODB_URI
+mongoose.connect(process.env.MONGODB_URI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useFindAndModify: false,
