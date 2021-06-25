@@ -2,11 +2,12 @@
 //     alert("The paragraph was clicked.");
 // });
   
-
-// // To delete the last character you could do:
-
-// $(".group_input").focus(function(){
-//     let qty =  $(this).val();
-//     $(this).val(valore.substring(0, qty.length - 1));
-// });
+let buy = 1;
+let buyEl = document.getElementById("buy");
+function buy(){
+    if (qty > 0) {
+        qty--;
+        qtyEl.value = qty;
+    }
+}
 

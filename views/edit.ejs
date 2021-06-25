@@ -20,17 +20,24 @@
     </header>
     <main>
         <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+        <!-- <form action="/products/ <%= product.id%>?_method=PUT" method="POST"> -->
             <label for="name">name: </label>
-            <input type="text" placeholder="name" id="name"/>
+            <input type="text" placeholder="name" id="name" value="<%= product.name %>"/>
+            <br />
             <label for="description">description: </label>
-            <input type="text" placeholder="description" id="description"/>
+            <input type="text" placeholder="description" id="description" value="<%= product.description %>"/>
+            value="<%= product.name %>"/>
+            <br />     <br />
             <label for="imgurl">imgurl: </label>
-            <input type="text" placeholder="imgurl" id="imgurl"/>
+            <input type="text" placeholder="imgurl" id="imgurl" value="<%= product.img %>"/>
+            <br />
             <label for="price">price: </label>
-            <input type="number" placeholder="price" id="price"/>
+            <input type="number" placeholder="price" id="price" value="<%= product.price %>"/>
+            <br />
             <label for="qty">qty: </label>
-            <input type="number" placeholder="qty" id="qty"/>
-            <input type="submit" value="Update Product">
+            <input type="number" placeholder="qty" id="qty" value="<%= product.qty %>"/>
+            <br />
+            <input type="submit" value="Update Product">    
         </form>
     </main>
 </body>

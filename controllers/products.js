@@ -37,11 +37,14 @@ productsRouter.delete('/products/:id', (req, res) => {
 });
 
 // Update
-productsRouter.put('/:id', (req, res) => {
-  Product.findByIdAndUpdate(req.params.id, req.body, {
+productsRouter.put('/:id/edit', (req, res) => {
+  Product.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
     new: true
   }, (err, updatedProduct) => {
-    res.redirect(`/products/${req.params.id}`)
+    res.redirect(`/products${req.params.id}`)
   });
 });
 
@@ -59,13 +62,29 @@ productsRouter.get(`/:id`, (req, res) => {
   })
 })
 
-  //EDIT
-  productsRouter.get('/products/:id/edit', (req, res) => {
-    Product.findById(req.params.id, (error, foundProduct) => {
-        res.render('edit.ejs', {
-            product: foundProduct
-        });
+  //Edit
+  // productsRouter.get('/products/:id/edit', (req, res) => {
+  //   Product.findById(req.params.id, (error, foundProduct) => {
+  //       res.render('edit.ejs', {
+  //           product: foundProduct
+  //       });
+  //   });
+  // });
+
+
+  productsRouter.put('/:id/edit', (req, res) => {
+    Product.findById(req.params.id, (err, product) => {
+        res.render('/edit', { product });
     });
 });
+
+//   productsRouter.put('edit/:id', (req, res) => {
+//     Product.findByIdAndUpdate(
+//         req.params.id, 
+//         req.body, 
+//         { new: true }, (err, updatedProduct) => {
+//             res.redirect(`/products/${req.params.id}`);
+//     });
+// });
 // export functionality
-module.exports = productsRouter;
+module.exports = productsRouter

@@ -28,7 +28,7 @@ const Products = [
         qty: 44,
     },
     {
-        name: 'Koalin Clay',
+        name: 'Kaolin Clay',
         description: 'A cleansing clay that gets deep within the pores and purges dirt and oils.  Heavily used in cosmetics and skincare.',
         imgurl:'https://i.imgur.com/JzsNhkO.jpg',
         price: 16,
